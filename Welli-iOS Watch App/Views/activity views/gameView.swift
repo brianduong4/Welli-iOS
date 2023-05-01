@@ -55,20 +55,6 @@ struct gameView: View {
                     }
                 }
             }.navigationBarBackButtonHidden(true)
-            
-            HStack{
-                Text("\(value)")
-                    .fontWeight(.regular)
-                    .font(.system(size: 70))
-                
-                Text("BPM")
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.red)
-                    .padding(.bottom, 28.0)
-                
-                Spacer()
-            }
             .padding()
             .onAppear(perform: start)
         }

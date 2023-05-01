@@ -13,7 +13,7 @@ import UserNotifications
 
 
 struct ContentView: View {
-    var username = "Brian" //MARK: PUT USERNAME FOR EACH USER HERE
+    var username = "Caitlin" //MARK: PUT USERNAME FOR EACH USER HERE
     
     @EnvironmentObject var environmentObject: WriteViewModel
     

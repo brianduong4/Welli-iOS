@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D043BF929F63BA6006E69DF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6D043BF829F63BA6006E69DF /* FirebaseAnalytics */; };
 		6D043BFC29F64D18006E69DF /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D043BFB29F64D18006E69DF /* UserNotifications.framework */; };
 		6D24D4E729E5C0460033E211 /* mainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24D4E629E5C0450033E211 /* mainMenuView.swift */; };
 		6D24D4EE29E5C1D10033E211 /* betterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24D4E929E5C1D10033E211 /* betterView.swift */; };
@@ -158,7 +157,6 @@
 				6D043BFC29F64D18006E69DF /* UserNotifications.framework in Frameworks */,
 				6D90A2F929E59ADD00BEDB07 /* FirebaseDatabaseSwift in Frameworks */,
 				6D90A2F729E59ADD00BEDB07 /* FirebaseDatabase in Frameworks */,
-				6D043BF929F63BA6006E69DF /* FirebaseAnalytics in Frameworks */,
 				6DAF3BF229E4632100CD9C96 /* WatchConnectivity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,7 +372,6 @@
 			packageProductDependencies = (
 				6D90A2F629E59ADD00BEDB07 /* FirebaseDatabase */,
 				6D90A2F829E59ADD00BEDB07 /* FirebaseDatabaseSwift */,
-				6D043BF829F63BA6006E69DF /* FirebaseAnalytics */,
 			);
 			productName = "Welli-iOS";
 			productReference = 6DAF3B3629DC887F00CD9C96 /* Welli-iOS.app */;
@@ -730,7 +727,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -783,7 +780,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -822,7 +819,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+				WATCHOS_DEPLOYMENT_TARGET = 9.4;
 			};
 			name = Debug;
 		};
@@ -858,7 +855,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+				WATCHOS_DEPLOYMENT_TARGET = 9.4;
 			};
 			name = Release;
 		};
@@ -883,7 +880,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -919,7 +916,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1183,11 +1180,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6D043BF829F63BA6006E69DF /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6D90A2F529E59ADD00BEDB07 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
 		6D90A2F629E59ADD00BEDB07 /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6D90A2F529E59ADD00BEDB07 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

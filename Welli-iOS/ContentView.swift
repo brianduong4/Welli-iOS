@@ -66,7 +66,7 @@ struct ContentView: View {
 
             // set the notification sound to the default critical sound with full volume, which will also vibrate the device 2 times
             content.sound = UNNotificationSound.defaultCriticalSound(withAudioVolume: 1.0)
-            content.userInfo = ["vibration-pattern": [0.2, 0.2, 0.2, 0.5, 0.2, 0.2, 0.2]]
+            content.userInfo = ["vibration-pattern": [0.1, 0.1]]
 
             // choose a random identifier for the 12pm notification
             let request12pm = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger12pm)
@@ -89,7 +89,7 @@ struct ContentView: View {
 
             // set the notification sound to the default critical sound with full volume, which will also vibrate the device 2 times
             content.sound = UNNotificationSound.defaultCriticalSound(withAudioVolume: 1.0)
-            content.userInfo = ["vibration-pattern": [0.2, 0.2, 0.2, 0.5, 0.2, 0.2, 0.2]]
+            content.userInfo = ["vibration-pattern": [0.1, 0.1]]
 
             // choose a random identifier for the 3pm notification
             let request3pm = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger3pm)
@@ -112,7 +112,7 @@ struct ContentView: View {
 
             // set the notification sound to the default critical sound with full volume, which will also vibrate the device 2 times
             content.sound = UNNotificationSound.defaultCriticalSound(withAudioVolume: 1.0)
-            content.userInfo = ["vibration-pattern": [0.2, 0.2, 0.2, 0.5, 0.2, 0.2, 0.2]]
+            content.userInfo = ["vibration-pattern": [0.1, 0.1]]
 
             // choose a random identifier for the 6pm notification
             let request6pm = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger6pm)

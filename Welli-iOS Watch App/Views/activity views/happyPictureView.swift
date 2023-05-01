@@ -20,22 +20,12 @@ struct happyPictureView: View {
     var body: some View{
         ScrollView{
             VStack{
-                Text("Enjoy your Happy Picture! Click finish when you are done.")
+                Text("Enjoy your happy picture Caitlin! Click finish when you are done.")
                     .padding()
                     .frame(width:200, height: 100)
                 Image(uiImage: UIImage(named:randomImage)!)
                     .resizable()
                     .frame(width: 150, height: 150)
-                    //.scaleEffect(scale)
-                    //.scaledToFit()
-                    /*.onAppear {
-                        let baseAnimation = Animation.easeInOut(duration: 5)
-                        let repeated = baseAnimation.repeatForever(autoreverses: true)
-                        
-                        withAnimation(repeated) {
-                            scale = 0.5
-                        }
-                    }*/
                 NavigationLink(destination: finishView(), label:{ Text("Finished")
                         .bold()
                 }).offset(y:15)
@@ -51,20 +41,6 @@ struct happyPictureView: View {
                     }
                 }
             }.navigationBarBackButtonHidden(true)
-            
-            HStack{
-                Text("\(value)")
-                    .fontWeight(.regular)
-                    .font(.system(size: 70))
-                
-                Text("BPM")
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.red)
-                    .padding(.bottom, 28.0)
-                
-                Spacer()
-            }
             .padding()
             .onAppear(perform: start)
         }
@@ -131,7 +107,7 @@ struct happyPictureView: View {
     }
 }
 
-var images: [String] = ["pic1.jpg","pic2.jpg","pic3.jpg", "pic4.jpg", "pic5.jpg"]
+var images: [String] = ["Caitlin_1.png","Caitlin_2.png","Caitlin_3.png", "Caitlin_4.png", "Caitlin_5.png"]
 let randomImage = images.randomElement()!
 
 struct happyPictureView_Previews: PreviewProvider {
