@@ -117,7 +117,7 @@ struct interventionView : View{
                     ZStack{Image(systemName:"circle").frame(width: 25.0, height: 10.0)
                             .offset(x: -80)
                             .multilineTextAlignment(.leading)
-                        NavigationLink(destination: ReadView(), label:{ Text("Read")
+                        NavigationLink(destination: ReadView(), label:{ Text("Watch TV")
                         })}
                 }
                 .simultaneousGesture(
@@ -125,7 +125,7 @@ struct interventionView : View{
                         .onEnded{
                             buttonTapped = true
                             if buttonTapped == true {
-                                environmentObject.data["intervention"] = "Reading"
+                                environmentObject.data["intervention"] = "Watch TV"
                                 
                                 //print(environmentObject.data)
 

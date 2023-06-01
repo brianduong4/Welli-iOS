@@ -57,6 +57,9 @@ struct MusicView: View {
                     }
                 }
             }.navigationBarBackButtonHidden(true)
+            HStack {
+                Text("\(value)")
+            }
             .padding()
             .onAppear(perform: start)
         }

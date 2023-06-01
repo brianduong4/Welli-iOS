@@ -23,9 +23,11 @@
 		6D24D52329E5CE610033E211 /* ReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24D52229E5CE610033E211 /* ReadView.swift */; };
 		6D24D52529E5CE760033E211 /* TalkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24D52429E5CE760033E211 /* TalkView.swift */; };
 		6D24D52729E5CE7F0033E211 /* WalkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24D52629E5CE7F0033E211 /* WalkView.swift */; };
+		6D53BC272A26623D007073FE /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D53BC262A26623D007073FE /* ExtensionDelegate.swift */; };
 		6D90A2F729E59ADD00BEDB07 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 6D90A2F629E59ADD00BEDB07 /* FirebaseDatabase */; };
 		6D90A2F929E59ADD00BEDB07 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6D90A2F829E59ADD00BEDB07 /* FirebaseDatabaseSwift */; };
 		6D90A2FB29E59D5B00BEDB07 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D90A2FA29E59D5A00BEDB07 /* GoogleService-Info.plist */; };
+		6D9F15532A25D18800F40DA0 /* ThresholdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F15522A25D18800F40DA0 /* ThresholdManager.swift */; };
 		6DA3BBCD29EF1686002B2D2B /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA3BBCC29EF1685002B2D2B /* UserNotifications.framework */; };
 		6DAF3B3A29DC887F00CD9C96 /* Welli_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF3B3929DC887F00CD9C96 /* Welli_iOSApp.swift */; };
 		6DAF3B3C29DC887F00CD9C96 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF3B3B29DC887F00CD9C96 /* ContentView.swift */; };
@@ -44,6 +46,7 @@
 		6DAF3B9B29DCAEB400CD9C96 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF3B9A29DCAEB300CD9C96 /* WatchConnector.swift */; };
 		6DAF3BF229E4632100CD9C96 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DAF3BF129E4632100CD9C96 /* WatchConnectivity.framework */; };
 		6DAF3BF429E4632E00CD9C96 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DAF3BF329E4632E00CD9C96 /* WatchConnectivity.framework */; };
+		6DDE4DB52A1F372200E859F7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE4DB42A1F372200E859F7 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,7 +119,9 @@
 		6D24D52229E5CE610033E211 /* ReadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadView.swift; sourceTree = "<group>"; };
 		6D24D52429E5CE760033E211 /* TalkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkView.swift; sourceTree = "<group>"; };
 		6D24D52629E5CE7F0033E211 /* WalkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkView.swift; sourceTree = "<group>"; };
+		6D53BC262A26623D007073FE /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		6D90A2FA29E59D5A00BEDB07 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6D9F15522A25D18800F40DA0 /* ThresholdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThresholdManager.swift; sourceTree = "<group>"; };
 		6DA3BBCC29EF1685002B2D2B /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.1.sdk/System/Library/Frameworks/UserNotifications.framework; sourceTree = DEVELOPER_DIR; };
 		6DA4B6BD29E7401E002A7D3C /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.1.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		6DA4B6C429E78321002A7D3C /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.1.sdk/System/Library/Frameworks/AVKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -147,6 +152,7 @@
 		6DAF3BF129E4632100CD9C96 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.2.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
 		6DAF3BF329E4632E00CD9C96 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.1.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
 		6DAF3BF829E4645700CD9C96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6DDE4DB42A1F372200E859F7 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +309,9 @@
 				6DA4B6C829E7D571002A7D3C /* Welli-iOS-Watch-App-Info.plist */,
 				6DAF3B6129DC888200CD9C96 /* Welli_iOSApp.swift */,
 				6D24D4EC29E5C1D10033E211 /* WriteViewModel.swift */,
+				6DDE4DB42A1F372200E859F7 /* NotificationManager.swift */,
+				6D9F15522A25D18800F40DA0 /* ThresholdManager.swift */,
+				6D53BC262A26623D007073FE /* ExtensionDelegate.swift */,
 				6D24D4E829E5C1080033E211 /* Views */,
 				6DAF3B9529DC88CB00CD9C96 /* Welli-iOS Watch App.entitlements */,
 				6DAF3B6529DC888200CD9C96 /* Assets.xcassets */,
@@ -611,15 +620,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D24D52329E5CE610033E211 /* ReadView.swift in Sources */,
+				6DDE4DB52A1F372200E859F7 /* NotificationManager.swift in Sources */,
 				6D24D51D29E5CE390033E211 /* happyPictureView.swift in Sources */,
 				6DAF3B6229DC888200CD9C96 /* Welli_iOSApp.swift in Sources */,
 				6D24D4E729E5C0460033E211 /* mainMenuView.swift in Sources */,
 				6D24D51F29E5CE490033E211 /* JournalView.swift in Sources */,
 				6D24D52529E5CE760033E211 /* TalkView.swift in Sources */,
+				6D9F15532A25D18800F40DA0 /* ThresholdManager.swift in Sources */,
 				6D24D52729E5CE7F0033E211 /* WalkView.swift in Sources */,
 				6D24D51529E5CC290033E211 /* deepBreathingView.swift in Sources */,
 				6D24D51929E5CCDA0033E211 /* drinkView.swift in Sources */,
 				6D24D52129E5CE570033E211 /* MusicView.swift in Sources */,
+				6D53BC272A26623D007073FE /* ExtensionDelegate.swift in Sources */,
 				6D24D4F229E5C1D10033E211 /* rewardsView.swift in Sources */,
 				6D24D51B29E5CD300033E211 /* gameView.swift in Sources */,
 				6D24D4F029E5C1D10033E211 /* interventionView.swift in Sources */,
@@ -727,12 +739,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -780,11 +793,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -819,7 +833,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -855,7 +869,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -880,7 +894,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -916,7 +930,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

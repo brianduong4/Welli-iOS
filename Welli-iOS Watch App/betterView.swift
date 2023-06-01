@@ -50,6 +50,7 @@ struct betterView : View{
                 .onEnded{
                     buttonTapped = true
                         if buttonTapped == true {
+                            environmentObject.data["type"] = "activity"
                             environmentObject.data["end_mood"] = "Yes"
                             environmentObject.data["hr_after"] = heartrate
                             environmentObject.data["end_time"] = MyStruct.init().currentDate + " " + MyStruct.init().currentMilitary
@@ -68,6 +69,7 @@ struct betterView : View{
                 .onEnded{
                     buttonTapped = true
                         if buttonTapped == true {
+                            environmentObject.data["type"] = "activity"
                             environmentObject.data["finish_status"] = "Yes"
                             environmentObject.data["hr_after"] = heartrate
                             environmentObject.data["end_time"] = MyStruct.init().currentDate + " " + MyStruct.init().currentMilitary

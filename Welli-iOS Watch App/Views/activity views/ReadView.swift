@@ -18,12 +18,12 @@ struct ReadView: View {
     @State private var value = 0
     
     @State private var currentImage = 0
-    let images = (0...50).compactMap { UIImage(named: "frame_\($0)_delay-0.04s") }
-    
+    //let images = (0...50).compactMap { UIImage(named: "frame_\($0)_delay-0.04s") }
+    let images = (0...4).compactMap { UIImage(named: "tv_\($0)") }
     var body: some View{
         ScrollView{
             VStack{
-                Text("Take time to read a book. Click finish when you are done.")
+                Text("Take a break and watch some TV. Click finish when you are done.")
                     .padding()
                     .frame(width:200, height: 100)
                 
@@ -33,7 +33,7 @@ struct ReadView: View {
                             .offset(y:-20)
                             .frame(width: 130, height: 100)
                             .onAppear {
-                                Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
+                                Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                                     withAnimation(Animation.linear(duration: 0.0)) {
                                         currentImage = (currentImage + 1) % images.count
                                     }

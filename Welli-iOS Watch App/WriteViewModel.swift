@@ -15,9 +15,16 @@ import UserNotifications
 
 
 class WriteViewModel: NSObject, WCSessionDelegate, ObservableObject{
+    
+    //INITIATED ACTIVITY DATA VARIABLE
     @Published var data: [String: String] = [:]
     
+    //INITIATED NOTIFICATION DATA VARIABLE
+    @Published var notificationData: [String: String] = [:]
+    
     var session: WCSession
+    
+    //FOR REWARDS
     @Published var messageText = ""
     
     init(session: WCSession = .default){
@@ -42,8 +49,18 @@ class WriteViewModel: NSObject, WCSessionDelegate, ObservableObject{
         
     
     
-    //MARK: SEND DATA
+    //MARK: SEND ACTIVITY DATA
     func sendDictionaryToiOSApp(_ dictionary: [String: Any]) {
+        let session = WCSession.default
+        if session.isReachable {
+            print("ios connection reachable")
+            print("Sending dictionary: \(dictionary)")
+            session.sendMessage(dictionary, replyHandler: nil, errorHandler: nil)
+        }
+    }
+    
+    //MARK: SEND NOTIFICATION DATA
+    func sendNotificationDataToiOSApp(_ dictionary: [String: Any]) {
         let session = WCSession.default
         if session.isReachable {
             print("ios connection reachable")
@@ -94,6 +111,7 @@ var myInstance = MyStruct()
 //MARK: END of date & time
 
 //MARK: START of notification center
+/*
 class SceneDelegate: NSObject, WKExtensionDelegate, UNUserNotificationCenterDelegate {
     
     func applicationDidFinishLaunching() {
@@ -128,8 +146,8 @@ class SceneDelegate: NSObject, WKExtensionDelegate, UNUserNotificationCenterDele
         center.add(request2)
         center.add(request3)
     }
-    
-}
+    	
+}*/
 
 
 
