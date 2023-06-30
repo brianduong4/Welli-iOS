@@ -9,6 +9,16 @@ import SwiftUI
 import UIKit
 import HealthKit
 
+//var images: [String] = ["erin1.jpg","erin2.jpg", "erin3.jpg", "erin4.jpg"] //ERIN'S IMAGES
+//var images: [String] = ["Caitlin_1.png","Caitlin_2.png", "Caitlin_3.png", "Caitlin_4.png", "Caitlin_5.png"] //CAITLIN'S IMAGES
+//var images: [String] = ["Lauren_1.jpg","Lauren_2.jpg", "Lauren_3.jpg", "Lauren_4.jpg", "Lauren_5.jpg"] //LAUREN'S IMAGES
+//var images: [String] = ["Colin_1.jpg","Colin_2.jpg"] //COLIN'S IMAGES
+//var images: [String] = ["Mckenna_1.jpg","Mckenna_2.jpg", "Mckenna_3.jpg", "Mckenna_4.jpg", "Mckenna_5.jpg"] //MCKENNA'S IMAGES
+var images: [String] = ["pic1bj.jpg","pic2bj.jpg", "pic3bj.jpg", "pic4bj.jpg", "pic5bj.jpg"] //BEN'S IMAGES
+
+let randomImage = images.randomElement()!
+
+
 struct happyPictureView: View {
     let healthStore = HKHealthStore()
     let heartRateQuantity = HKUnit(from: "count/min")
@@ -20,9 +30,10 @@ struct happyPictureView: View {
     var body: some View{
         ScrollView{
             VStack{
-                Text("Enjoy your happy picture Caitlin! Click finish when you are done.")
+                Text("Enjoy your happy picture Ben! Click finish when you are done.")
                     .padding()
-                    .frame(width:200, height: 100)
+                    .frame(width:180, height: 100)
+                
                 Image(uiImage: UIImage(named:randomImage)!)
                     .resizable()
                     .frame(width: 150, height: 150)
@@ -107,8 +118,7 @@ struct happyPictureView: View {
     }
 }
 
-var images: [String] = ["Caitlin_1.png","Caitlin_2.png","Caitlin_3.png", "Caitlin_4.png", "Caitlin_5.png"]
-let randomImage = images.randomElement()!
+
 
 struct happyPictureView_Previews: PreviewProvider {
     static var previews: some View {

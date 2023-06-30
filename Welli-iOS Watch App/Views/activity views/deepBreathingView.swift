@@ -26,7 +26,7 @@ struct deepBreathingView : View{
             VStack{
                 Text("Take a Deep Breath. Click finish when you are done.")
                     .padding()
-                    .frame(width:200, height: 100)
+                    .frame(width:190, height: 100)
                 
                 Image(uiImage: images[currentImage])
                             .resizable()

@@ -18,14 +18,14 @@ struct ReadView: View {
     @State private var value = 0
     
     @State private var currentImage = 0
-    //let images = (0...50).compactMap { UIImage(named: "frame_\($0)_delay-0.04s") }
-    let images = (0...4).compactMap { UIImage(named: "tv_\($0)") }
+    //let images = (0...50).compactMap { UIImage(named: "frame_\($0)_delay-0.04s") } //Reading images
+    let images = (0...4).compactMap { UIImage(named: "tv_\($0)") } //TV Images
     var body: some View{
         ScrollView{
             VStack{
                 Text("Take a break and watch some TV. Click finish when you are done.")
                     .padding()
-                    .frame(width:200, height: 100)
+                    .frame(width:180, height: 100)
                 
                 Image(uiImage: images[currentImage])
                             .resizable()

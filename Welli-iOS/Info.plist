@@ -2,8 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>edu.gmu.Welli-iOS.backgroundfetch</string>
+	</array>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
+	<key>NSLocalUsageDescription</key>
+	<string>We need to send notifications when your heart rate exceeds the threshold.</string>
+	<key>NSPrincipleClass</key>
+	<string>AppDelegate</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>

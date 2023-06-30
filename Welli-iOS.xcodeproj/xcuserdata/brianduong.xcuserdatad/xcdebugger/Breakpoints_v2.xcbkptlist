@@ -165,49 +165,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5A756B02-93E3-43B4-AE1D-2A1F849C31E0"
+            uuid = "93CE6698-90A1-4D9A-BC69-517DC3CB5E16"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Welli-iOS Watch App/Views/mainMenuView.swift"
+            filePath = "Welli-iOS Watch App/ThresholdNotificationManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "589"
-            endingLineNumber = "589"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "408"
+            endingLineNumber = "408"
+            landmarkName = "sendHighHeartRateNotification()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8FF1B03C-CDEB-4EC8-9BCF-BEF4A7CE0742"
+            uuid = "5E87564E-B164-46F3-94D9-AC8A6787567D"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Welli-iOS Watch App/Welli_iOSApp.swift"
+            filePath = "Welli-iOS Watch App/ThresholdNotificationManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "409"
+            endingLineNumber = "409"
+            landmarkName = "sendHighHeartRateNotification()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EEAD7009-D306-447A-9581-D80205DFDA81"
+            uuid = "5FD957D6-7571-40A2-986B-B05943C1BF92"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Welli-iOS Watch App/Welli_iOSApp.swift"
+            filePath = "Welli-iOS Watch App/ThresholdNotificationManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "388"
+            endingLineNumber = "388"
+            landmarkName = "sendHighHeartRateNotification()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

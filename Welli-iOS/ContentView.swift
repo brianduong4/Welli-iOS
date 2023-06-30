@@ -9,12 +9,21 @@ import SwiftUI
 import WatchConnectivity
 import UIKit
 import UserNotifications
+import HealthKit
+import HealthKitUI
+import BackgroundTasks
+import Firebase
+import FirebaseDatabase
+
 
 struct ContentView: View {
     
     var model = ViewModelPhone()
     @State var reachable = "No"
-    
+    @State private var isHealthKitAuthorized = false
+    @State private var isNotificationAuthorized = false
+    let username = ""  //MARK: CHANGE USERNAME         <-----
+        
 
     var body: some View {
         VStack {
@@ -22,9 +31,14 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Welli-iOS Companion App")
-            Text("Firebase Connection")
-            
-            //MARK: Start Method #3
+            /*Text("Firebase Connection")
+                .onAppear {
+                    requestHealthKitAuthorization()
+                    scheduleBackgroundTask()
+                    startHeartRateTracking()
+                    requestNotificationAuthorization()
+                }*/
+            //MARK: REACH FIREBASE CONNECT
             Text("Reachable: \(reachable)")
             Button(action: {
                 if self.model.session.isReachable{
@@ -37,6 +51,7 @@ struct ContentView: View {
             }) {
                 Text("Update")
             }
+            //MARK: END OF FIREBASE CONNECT
             
             Button("Request Permission") {
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {
@@ -49,94 +64,179 @@ struct ContentView: View {
                 }
             }
             
-            Button("Schedule 12pm Notification", action: TwelvePMNotification)
-            Button("Schedule 3pm Notification", action: ThreePMNotification)
-            Button("Schedule 6pm Notification", action: SixPMNotification)
+            /*Button("Upload data to Firebase") {
+                uploadDataToFirebase()
+            }*/
+            
         }
         .padding()
     }
     
-    func TwelvePMNotification() {
-            let identifier = "12pm-notfication"
-            let title = "Time to work out"
-            let body = "Don't be a lazy little butt!"
-            let hour = 12
-            let minute = 00
-            let isDaily = true
+    /*func requestHealthKitAuthorization() {
+            let typesToRead: Set<HKObjectType> = [HKObjectType.quantityType(forIdentifier: .heartRate)!]
+            HKHealthStore().requestAuthorization(toShare: nil, read: typesToRead) { success, error in
+                if success {
+                    isHealthKitAuthorized = true
+                } else {
+                    print("Failed to authorize HealthKit access: \(error?.localizedDescription ?? "")")
+                }
+            }
+        }
+    func requestNotificationAuthorization() {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { success, error in
+                if success {
+                    isNotificationAuthorized = true
+                } else {
+                    print("Failed to authorize notification access: \(error?.localizedDescription ?? "")")
+                }
+            }
+        }
+        
+        func scheduleBackgroundTask() {
+            let taskIdentifier = "edu.gmu.Welli-iOS.backgroundfetch"
+            do {
+                BGTaskScheduler.shared.register(forTaskWithIdentifier: taskIdentifier, using: nil) { task in
+                    handleBackgroundTask(task: task)
+                }
+                
+                let request = BGAppRefreshTaskRequest(identifier: taskIdentifier)
+                request.earliestBeginDate = Date(timeIntervalSinceNow: 60 * 30) // Adjust the interval as needed
+                
+                try BGTaskScheduler.shared.submit(request)
+            } catch {
+                print("Failed to schedule background task: \(error)")
+            }
+        }
+        
+        func handleBackgroundTask(task: BGTask) {
+            scheduleNextBackgroundTask() // Schedule the next background task
             
-            let notificationCenter = UNUserNotificationCenter.current()
+            if task is BGAppRefreshTask {
+                handleBackgroundFetchTask(task: task as! BGAppRefreshTask)
+            } else {
+                handleGeneralBackgroundTask()
+            }
+        }
+        
+        func handleBackgroundFetchTask(task: BGAppRefreshTask) {
+            if isHealthKitAuthorized {
+                retrieveHeartRate { result in
+                    switch result {
+                    case .success(let heartRate):
+                        let threshold = 70 // MARK: CUSTOM THRESHOLD
+                        if heartRate > threshold {
+                            sendHeartRateNotification(heartRate: heartRate)
+                            storeHeartRateData(heartRate: heartRate)
+                        }
+                    case .failure(let error):
+                        print("Failed to retrieve heart rate: \(error)")
+                    }
+                    
+                    task.setTaskCompleted(success: true)
+                }
+            } else {
+                print("HealthKit access not authorized.")
+                task.setTaskCompleted(success: false)
+            }
+        }
+        
+        func handleGeneralBackgroundTask() {
+            // Perform general background tasks here
+            // ...
+        }
+        
+        func retrieveHeartRate(completion: @escaping (Result<Int, Error>) -> Void) {
+            guard let sampleType = HKSampleType.quantityType(forIdentifier: .heartRate) else {
+                completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Heart rate data is not available."])))
+                return
+            }
             
+            let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+            let query = HKSampleQuery(sampleType: sampleType, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { (_, results, error) in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                
+                guard let heartRateSample = results?.first as? HKQuantitySample else {
+                    completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "No heart rate data available."])))
+                    return
+                }
+                
+                let heartRateUnit = HKUnit.count().unitDivided(by: .minute())
+                let heartRateValue = Int(heartRateSample.quantity.doubleValue(for: heartRateUnit))
+                
+                completion(.success(heartRateValue))
+            }
+            
+            HKHealthStore().execute(query)
+        }
+        
+        func sendHeartRateNotification(heartRate: Int) {
             let content = UNMutableNotificationContent()
-            content.title = title
-            content.body = body
-            content.sound = .default
+            content.title = "High Heart Rate Detected"
+            content.body = "Your heart rate is \(heartRate) bpm, which is above the threshold."
+            content.sound = UNNotificationSound.default
             
-            let calendar = Calendar.current
-            var dateComponents = DateComponents(calendar: calendar, timeZone: TimeZone.current)
-            dateComponents.hour = hour
-            dateComponents.minute = minute
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print("Failed to send notification: \(error)")
+                }
+            }
+        }
+        
+        func storeHeartRateData(heartRate: Int) {
+            let heartRateData: [String: Any] = ["heartRate": heartRate, "date": Date()]
             
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: isDaily)
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+            var storedData: [[String: Any]] = UserDefaults.standard.array(forKey: "heartRateData") as? [[String: Any]] ?? []
+            storedData.append(heartRateData)
+            UserDefaults.standard.set(storedData, forKey: "heartRateData")
+        }
+        
+        func scheduleNextBackgroundTask() {
+            let taskIdentifier = "edu.gmu.Welli-iOS.backgroundfetch"
             
-            notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
-            notificationCenter.add(request)
+            let request = BGAppRefreshTaskRequest(identifier: taskIdentifier)
+            request.earliestBeginDate = Date(timeIntervalSinceNow: 60 * 30) // Adjust the interval as needed
+            
+            do {
+                try BGTaskScheduler.shared.submit(request)
+            } catch {
+                print("Failed to schedule next background task: \(error)")
+            }
+        }
+        
+        func startHeartRateTracking() {
+            // Start heart rate tracking or other necessary background operations
+            // ...
         }
     
-    func ThreePMNotification() {
-            let identifier = "3pm-notfication"
-            let title = "Time to work out"
-            let body = "Don't be a lazy little butt!"
-            let hour = 15
-            let minute = 00
-            let isDaily = true
-            
-            let notificationCenter = UNUserNotificationCenter.current()
-            
-            let content = UNMutableNotificationContent()
-            content.title = title
-            content.body = body
-            content.sound = .default
-            
-            let calendar = Calendar.current
-            var dateComponents = DateComponents(calendar: calendar, timeZone: TimeZone.current)
-            dateComponents.hour = hour
-            dateComponents.minute = minute
-            
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: isDaily)
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-            
-            notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
-            notificationCenter.add(request)
-        }
-    
-    func SixPMNotification() {
-            let identifier = "6pm-notfication"
-            let title = "Time to work out"
-            let body = "Don't be a lazy little butt!"
-            let hour = 18
-            let minute = 00
-            let isDaily = true
-            
-            let notificationCenter = UNUserNotificationCenter.current()
-            
-            let content = UNMutableNotificationContent()
-            content.title = title
-            content.body = body
-            content.sound = .default
-            
-            let calendar = Calendar.current
-            var dateComponents = DateComponents(calendar: calendar, timeZone: TimeZone.current)
-            dateComponents.hour = hour
-            dateComponents.minute = minute
-            
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: isDaily)
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-            
-            notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
-            notificationCenter.add(request)
-        }
-    
+    //MARK: UPLOAD Datasets to firebase
+        func uploadDataToFirebase() {
+            // Retrieve the data from UserDefaults
+            guard let storedData = UserDefaults.standard.array(forKey: "heartRateData") as? [[String: Any]] else {
+                return
+            }
+
+            // Create a DatabaseReference
+            let ref = Database.database().reference()
+
+            // Iterate through each stored data entry and upload it to FirebaseDatabase
+            for data in storedData {
+                ref.child("NotificationLog").child("\(username)").childByAutoId().setValue(data) { (error, _) in
+                    if let error = error {
+                        print("Failed to upload data to FirebaseDatabase: \(error)")
+                    } else {
+                        print("Data uploaded successfully")
+                    }
+                }
+            }
+
+            // Clear the stored data in UserDefaults
+            UserDefaults.standard.removeObject(forKey: "heartRateData")
+        }*/
+
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -11,8 +11,7 @@ import Firebase
 
 @main
 struct Welli_iOSApp: App {
-    
-    
+    //@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     init() {
         FirebaseApp.configure()

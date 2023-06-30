@@ -21,7 +21,7 @@ struct interventionView : View{
             ScrollView {
                 LazyVStack{
                     ZStack{Image(systemName:"circle").frame(width: 25.0, height: 10.0)
-                            .offset(x: -80)
+                            .offset(x: -65)
                             .multilineTextAlignment(.leading)
                         NavigationLink(destination: deepBreathingView(), label:{ Text("Deep Breath")
                         })}
@@ -43,7 +43,7 @@ struct interventionView : View{
                 
                 LazyVStack{
                     ZStack{Image(systemName:"circle").frame(width: 25.0, height: 10.0)
-                            .offset(x: -80)
+                            .offset(x: -65)
                             .multilineTextAlignment(.leading)
                         NavigationLink(destination: drinkView(), label:{ Text("Drink Water")
                         })}
@@ -60,7 +60,7 @@ struct interventionView : View{
                         })
                 LazyVStack {
                     ZStack{Image(systemName:"circle").frame(width: 25.0, height: 10.0)
-                            .offset(x: -80)
+                            .offset(x: -65)
                             .multilineTextAlignment(.leading)
                         NavigationLink(destination: WalkView(), label:{ Text("Go Take a Walk")
                         })}
@@ -70,15 +70,32 @@ struct interventionView : View{
                         .onEnded{
                             buttonTapped = true
                             if buttonTapped == true {
-                                environmentObject.data["intervention"] = "Walking"
+                                environmentObject.data["intervention"] = "Walk"
                                 
                                 //print(environmentObject.data)
                             }
                         })
+                /*LazyVStack {
+                    ZStack{Image(systemName:"circle").frame(width: 25.0, height: 10.0)
+                            .offset(x: -65)
+                            .multilineTextAlignment(.leading)
+                        NavigationLink(destination: WalkView(), label:{ Text("Exercise")
+                        })}
+                }
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded{
+                            buttonTapped = true
+                            if buttonTapped == true {
+                                environmentObject.data["intervention"] = "Exercise"
+                                
+                                //print(environmentObject.data)
+                            }
+                        })*/
                 
                 LazyVStack {
                     ZStack{Image(systemName:"circle").frame(width: 25.0, height: 10.0)
-                            .offset(x: -80)
+                            .offset(x: -65)
                             .multilineTextAlignment(.leading)
                         NavigationLink(destination: JournalView(), label:{ Text("Journaling")
                         })}
@@ -97,7 +114,7 @@ struct interventionView : View{
                     
                 LazyVStack {
                     ZStack{Image(systemName:"circle").frame(width: 25.0, height: 10.0)
-                            .offset(x: -80)
+                            .offset(x: -65)
                             .multilineTextAlignment(.leading)
                         NavigationLink(destination: gameView(), label:{ Text("Play a Game")
                         })}
@@ -107,15 +124,33 @@ struct interventionView : View{
                         .onEnded{
                             buttonTapped = true
                             if buttonTapped == true {
-                                environmentObject.data["intervention"] = "Playing Game"
+                                environmentObject.data["intervention"] = "Game"
                                 
                                 //print(environmentObject.data)
 
                             }
                         })
-                LazyVStack {
+                /*LazyVStack {
                     ZStack{Image(systemName:"circle").frame(width: 25.0, height: 10.0)
-                            .offset(x: -80)
+                            .offset(x: -65)
+                            .multilineTextAlignment(.leading)
+                        NavigationLink(destination: gameView(), label:{ Text("Do a Puzzle")
+                        })}
+                }
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded{
+                            buttonTapped = true
+                            if buttonTapped == true {
+                                environmentObject.data["intervention"] = "Puzzle"
+                                
+                                //print(environmentObject.data)
+
+                            }
+                        })*/
+                /*LazyVStack {
+                    ZStack{Image(systemName:"circle").frame(width: 25.0, height: 10.0)
+                            .offset(x: -65)
                             .multilineTextAlignment(.leading)
                         NavigationLink(destination: ReadView(), label:{ Text("Watch TV")
                         })}
@@ -130,11 +165,11 @@ struct interventionView : View{
                                 //print(environmentObject.data)
 
                             }
-                        })
+                        })*/
                 
                 LazyVStack {
                     ZStack{Image(systemName:"circle").frame(width: 25.0, height: 10.0)
-                            .offset(x: -80)
+                            .offset(x: -65)
                             .multilineTextAlignment(.leading)
                         NavigationLink(destination: MusicView(), label:{ Text("Listen to Music")
                         })}
@@ -151,9 +186,9 @@ struct interventionView : View{
                             }
                         })
                 
-                LazyVStack {
+                /*LazyVStack {
                     ZStack{Image(systemName:"circle").frame(width: 25.0, height: 10.0)
-                            .offset(x: -80)
+                            .offset(x: -65)
                             .multilineTextAlignment(.leading)
                         NavigationLink(destination: TalkView(), label:{ Text("Talk to Someone")
                         })}
@@ -168,11 +203,11 @@ struct interventionView : View{
                                // print(environmentObject.data)
 
                             }
-                        })
+                        })*/
                 
                 LazyVStack {
                     ZStack{Image(systemName:"circle").frame(width: 25.0, height: 10.0)
-                            .offset(x: -80)
+                            .offset(x: -65)
                             .multilineTextAlignment(.leading)
                         NavigationLink(destination: happyPictureView(), label:{ Text("Happy Picture")
                         })}

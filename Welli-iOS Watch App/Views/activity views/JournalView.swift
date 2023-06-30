@@ -25,7 +25,7 @@ struct JournalView: View {
             VStack{
                 Text("Take your time to journal. Click finish when you are done.")
                     .padding()
-                    .frame(width:200, height: 100)
+                    .frame(width:190, height: 100)
                 
                 Image(uiImage: images[currentImage])
                             .resizable()

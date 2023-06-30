@@ -18,14 +18,16 @@ struct gameView: View {
     @State private var value = 0
     
     @State private var currentImage = 0
-    let images = (0...1).compactMap { UIImage(named: "frame_\($0)_delay-0.5s") }
+    let images = (0...1).compactMap { UIImage(named: "frame_\($0)_delay-0.5s") } //Game Images
+    //let images = (0...45).compactMap { UIImage(named: "puzzle_\($0)") } //Puzzle Images
     
     var body: some View{
         ScrollView{
             VStack{
                 Text("Take time to play a game. Click finish when you are done.")
+                //Text("Take time to do a puzzle. Click finish when you are done.")
                     .padding()
-                    .frame(width:200, height: 100)
+                    .frame(width:180, height: 100)
                 
                 Image(uiImage: images[currentImage])
                             .resizable()
@@ -33,7 +35,7 @@ struct gameView: View {
                             .offset(y:-20)
                             //.frame(width: 130, height: 100)
                             .onAppear {
-                                Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+                                Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
                                     withAnimation(Animation.linear(duration: 0.0)) {
                                         currentImage = (currentImage + 1) % images.count
                                     }

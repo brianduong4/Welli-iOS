@@ -27,7 +27,7 @@ struct MusicView: View {
             VStack{
                 Text("Listen to music. Click finish when you are done.")
                     .padding()
-                    .frame(width:200, height: 100)
+                    .frame(width:190, height: 100)
                 
                 Image(uiImage: images[currentImage])
                             .resizable()
@@ -57,9 +57,9 @@ struct MusicView: View {
                     }
                 }
             }.navigationBarBackButtonHidden(true)
-            HStack {
+            /*HStack {
                 Text("\(value)")
-            }
+            }*/
             .padding()
             .onAppear(perform: start)
         }
