@@ -15,8 +15,7 @@ import HealthKit
 //var images: [String] = ["Colin_1.jpg","Colin_2.jpg"] //COLIN'S IMAGES
 //var images: [String] = ["Mckenna_1.jpg","Mckenna_2.jpg", "Mckenna_3.jpg", "Mckenna_4.jpg", "Mckenna_5.jpg"] //MCKENNA'S IMAGES
 var images: [String] = ["pic1bj.jpg","pic2bj.jpg", "pic3bj.jpg", "pic4bj.jpg", "pic5bj.jpg"] //BEN'S IMAGES
-
-let randomImage = images.randomElement()!
+//let randomImage = images.randomElement()!
 
 
 struct happyPictureView: View {
@@ -27,14 +26,15 @@ struct happyPictureView: View {
     @State var scale = 1.0
     @State private var value = 0
     
+    @State private var randomImage: String = ""
+    
     var body: some View{
         ScrollView{
             VStack{
                 Text("Enjoy your happy picture Ben! Click finish when you are done.")
                     .padding()
                     .frame(width:180, height: 100)
-                
-                Image(uiImage: UIImage(named:randomImage)!)
+                Image(uiImage: UIImage(named: randomImage) ?? UIImage())
                     .resizable()
                     .frame(width: 150, height: 150)
                 NavigationLink(destination: finishView(), label:{ Text("Finished")
@@ -58,8 +58,10 @@ struct happyPictureView: View {
     }
     
     func start() {
+        randomImage = images.randomElement() ?? "default_image"
         authorizeHealthkit()
         startHeartRateQuery(quantityTypeIdentifier: .heartRate)
+        
     }
 
     func authorizeHealthkit() {
