@@ -5,15 +5,17 @@
 //  Created by Brian Duong on 4/4/23.
 //
 
+import UIKit
 import SwiftUI
 import Firebase
+import FirebaseDatabase
 import HealthKit
 import BackgroundTasks
 import UserNotifications
-import FirebaseDatabase
+import WatchConnectivity
 
 
-@main
+//@main
 struct Welli_iOSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
@@ -29,21 +31,92 @@ struct Welli_iOSApp: App {
     }
 }
 
-class AppDelegate: NSObject, UIApplicationDelegate {
+/*@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate{
+    var window: UIWindow?
     let healthStore = HKHealthStore()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Request HealthKit authorization
-        requestHealthKitAuthorization()
+            
+            // Firebase configuration
+            FirebaseApp.configure()
+            
+            // Request HealthKit authorization
+            requestHealthKitAuthorization()
+            
+            // Request notification authorization
+            requestNotificationAuthorization()
+            
+            // Schedule the initial background task
+            scheduleBackgroundTask()
+            
+            // Watch Connectivity setup
+            if WCSession.isSupported() {
+                let session = WCSession.default
+                session.delegate = self
+                session.activate()
+            }
+            
+            return true
+        }
+    
+    // MARK: WCSessionDelegate methods
+        func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+            // handle session activation completion here
+        }
+
+        func sessionDidBecomeInactive(_ session: WCSession) {
+            // handle session becoming inactive
+        }
+
+        func sessionDidDeactivate(_ session: WCSession) {
+            // handle session deactivation
+            // you need to reactivate here
+            session.activate()
+        }
+
+        func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+            if let heartRate = message["heartRate"] as? Double {
+                // Do something with the received heart rate data
+                print("Received heart rate: \(heartRate) bpm")
+                uploadStoredData(username: message["user"] as! String, heartRate: heartRate)
+            }
+        }
         
-        // Request notification authorization
-        requestNotificationAuthorization()
-        
-        // Schedule the initial background task
-        scheduleBackgroundTask()
-        
-        return true
-    }
+         func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
+            if let heartRateData = message["heartRateData"] as? [Double] {
+                // Do something with the received heart rate data
+                print("Received heart rate data: \(heartRateData)")
+                uploadBatchedHeartRateData(username: message["user"] as! String, heartRateData: heartRateData)
+            }
+        }
+    
+    func uploadBatchedHeartRateData(username: String, heartRateData: [Double]) {
+            guard !username.isEmpty else {
+                print("Username is empty.")
+                return
+            }
+
+            let ref = Database.database().reference()
+            let timestamp = Date().timeIntervalSince1970
+
+            for heartRate in heartRateData {
+                let data: [String: Any] = [
+                    "heartRate": heartRate,
+                    "time": "\(timestamp)",
+                    "type": "batch",
+                    "user": username
+                ]
+
+                ref.child("Notification").child(username).childByAutoId().setValue(data) { error, _ in
+                    if let error = error {
+                        print("Error uploading data: \(error)")
+                    } else {
+                        print("Data uploaded successfully.")
+                    }
+                }
+            }
+        }
     
     func requestHealthKitAuthorization() {
         let typesToRead: Set<HKObjectType> = [HKObjectType.quantityType(forIdentifier: .heartRate)!]
@@ -74,7 +147,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             }
             
             let request = BGAppRefreshTaskRequest(identifier: taskIdentifier)
-            request.earliestBeginDate = Date(timeIntervalSinceNow: 60 * 30) // Adjust the interval as needed
+            request.earliestBeginDate = Date(timeIntervalSinceNow: 60 ) // Adjust the interval as needed
             
             try BGTaskScheduler.shared.submit(request)
         } catch {
@@ -195,5 +268,5 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             }
         }
     }
-}
+}*/
 

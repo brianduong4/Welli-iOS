@@ -14,7 +14,7 @@ import WatchConnectivity
 import HealthKit
 import UIKit
 
-class ExtensionDelegate: NSObject, WKExtensionDelegate, UNUserNotificationCenterDelegate {
+/*class ExtensionDelegate: NSObject, WKExtensionDelegate, UNUserNotificationCenterDelegate {
     
     func applicationDidFinishLaunching() {
         // Set the delegate for UNUserNotificationCenter
@@ -45,7 +45,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, UNUserNotificationCenter
 
     // Other delegate methods...
     
-}
+}*/
 
 
 
@@ -77,7 +77,7 @@ struct Welli_iOS_Watch_AppApp: App {
 
     
     init() {
-        HeartRateMonitor.shared.startMonitoringHeartRate()
+        HeartRateMonitor.shared.startMonitoring()
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {
             success, error in

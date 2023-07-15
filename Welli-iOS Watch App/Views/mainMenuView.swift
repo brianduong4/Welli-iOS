@@ -125,9 +125,10 @@ struct ContentView: View {
                 .padding()*/
                 .onAppear(perform: start) //STARTS MONITORING HEART RATE
                 .onAppear {
-                    if !HeartRateMonitor.isMonitoring {
+                    if !HeartRateMonitor.shared
+                        .isMonitoring {
                             print("Starting to monitor heart rate.")
-                            HeartRateMonitor.shared.startMonitoringHeartRate()
+                            HeartRateMonitor.shared.startMonitoring()
                         }
                 }
                 
@@ -214,12 +215,7 @@ class HostingController<Content>: WKHostingController<Content> where Content: Vi
 
 //MARK: BEGINNING OF THRESHOLD NOTIFICATION CENTER
 
-
-
-
-//MARK: SAMPLE 5
-
-class HeartRateMonitor {
+/*class HeartRateMonitor {
     
     static let shared = HeartRateMonitor()
     
@@ -752,9 +748,7 @@ class HeartRateMonitor {
                 
             }
         }
-}
-
-
+}*/
 
 //MARK: END OF THRESHOLD NOTIFICATION CENTER
 
