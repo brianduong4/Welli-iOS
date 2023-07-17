@@ -77,12 +77,14 @@ class HeartRateMonitor: NSObject, HKWorkoutSessionDelegate, WCSessionDelegate {
     }
     
     func stopMonitoring() {
-        guard let workoutSession = workoutSession else {
+        guard let workoutSession = workoutSession, workoutSession.state == .running else {
             print("Workout session is not available.")
             return
         }
         
-        healthStore.end(workoutSession)
+        
+        //TODO: Change this to HKWorkout Session's method
+        healthStore.end(workoutSession) 
         isMonitoring = false
     }
     
@@ -113,10 +115,20 @@ class HeartRateMonitor: NSObject, HKWorkoutSessionDelegate, WCSessionDelegate {
     }
     
     func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
-        <#code#>
+        switch toState {
+        case .notStarted:
+            print("Workout session has not started yet.")
+        case .running:
+            print("Workout session is now running.")
+        case .ended:
+            print("Workout session has ended.")
+        default:
+            print("Workout session is in an unknown state.")
+        }
     }
-    
+
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
-        <#code#>
+        print("Workout session failed with error: \(error.localizedDescription)")
+        stopMonitoring()
     }
 }

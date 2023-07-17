@@ -94,49 +94,39 @@ class HeartRateDataManager: NSObject, WCSessionDelegate {
     }
     
     func handleBackgroundFetchTask(task: BGAppRefreshTask) {
-//        HeartRateMonitor.shared.fetchMostRecentHeartRateSamples { heartRateSamples in
-//            for sample in heartRateSamples {
-//                let heartRate = sample.quantity.doubleValue(for: HKUnit.count().unitDivided(by: .minute()))
-//                print("Background task - heart rate sample: \(heartRate) bpm")
-//
-//                if heartRate > 100 { // Custom threshold value
-//                    self.sendHeartRateNotification(heartRate: heartRate)
-//                    self.storeHeartRateData(heartRate: heartRate)
-//                }
-//            }
-//            task.setTaskCompleted(success: true)
-//        }
-        //MARK: REMEMBERT TO IMPLEMENT SESSION REPLY HANDLER
-        
-        if WCSession.isSupported() {
-            let session = WCSession.default
-            if session.activationState == .activated {
-                //Send message to watch app tell him gimme yummy data
-                session.sendMessage(["request": "fetchHeartDate"], replyHandler: { response in
-                    //Handle Response here
-                    if let heartRate = response["heartRate"] as? Double {
-                        print("Recieved heart: \(heartRate) bpm")
-                        if heartRate > 70 {
-                            self.sendHeartRateNotification(heartRate: heartRate)
-                            self.storeHeartRateData(heartRate: heartRate)
-                        }
-                    }
-                    
-                })
+        sendRequestForHeartRate { heartRate in
+            print("Background task - heart rate sample: \(heartRate) bpm")
+            
+            if heartRate > 100 { // Custom threshold value
+                self.sendHeartRateNotification(heartRate: heartRate)
+                self.storeHeartRateData(heartRate: heartRate)
             }
+            
+            task.setTaskCompleted(success: true)
+        }
+    }
+
+    func sendRequestForHeartRate(completion: @escaping (Double) -> Void) {
+        if WCSession.default.isReachable {
+            WCSession.default.sendMessage(["request" : "heartRate"], replyHandler: { (response) in
+                if let heartRate = response["heartRate"] as? Double {
+                    DispatchQueue.main.async {
+                        completion(heartRate)
+                    }
+                }
+            }, errorHandler: { (error) in
+                print("Error sending message: \(error.localizedDescription)")
+            })
         }
     }
     
     func handleGeneralBackgroundTask() {
-        HeartRateMonitor.shared.fetchMostRecentHeartRateSamples { heartRateSamples in
-            for sample in heartRateSamples {
-                let heartRate = sample.quantity.doubleValue(for: HKUnit.count().unitDivided(by: .minute()))
-                print("General task - heart rate sample: \(heartRate) bpm")
-                
-                if heartRate > 100 { // Custom threshold value
-                    self.sendHeartRateNotification(heartRate: heartRate)
-                    self.storeHeartRateData(heartRate: heartRate)
-                }
+        sendRequestForHeartRate { heartRate in
+            print("General task - heart rate sample: \(heartRate) bpm")
+
+            if heartRate > 70 { // Custom threshold value
+                self.sendHeartRateNotification(heartRate: heartRate)
+                self.storeHeartRateData(heartRate: heartRate)
             }
         }
     }
