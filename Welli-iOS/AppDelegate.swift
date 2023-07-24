@@ -55,6 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         if let heartRate = message["heartRate"] as? Double {
             // Do something with the received heart rate data
             print("Received heart rate: \(heartRate) bpm")
+            HeartRateDataManager().storeHeartRateData(heartRate: heartRate)
         }
     }
 }
+
