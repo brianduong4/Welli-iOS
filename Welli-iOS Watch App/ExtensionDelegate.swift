@@ -24,8 +24,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         HeartRateMonitor.shared.startMonitoring()
     }
     
+    // The workout session will now continue when the app goes into the background
     func applicationWillResignActive() {
-        HeartRateMonitor.shared.stopMonitoring()
+        // Do not stop monitoring when app goes to background
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
@@ -39,6 +40,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         if let heartRate = message["heartRate"] as? Double {
             print("Received heart rate: \(heartRate) bpm")
+            HeartRateMonitor.shared.sendHeartRateDataToPhone(heartRate)
         }
     }
 }

@@ -15,7 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
+        // Request user notifications authorization
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if let error = error {
+                print("Failed to request authorization for user notifications: \(error.localizedDescription)")
+                return
+            }
+            if granted {
+                print("User notifications authorized.")
+            } else {
+                print("User notifications not authorized.")
+            }
+        }
+
         if WCSession.isSupported() {
             let session = WCSession.default
             session.delegate = self
@@ -28,7 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         
         return true
     }
-    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if let error = error {
             print("WCSession activation failed with error: \(error.localizedDescription)")
@@ -55,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         if let heartRate = message["heartRate"] as? Double {
             // Do something with the received heart rate data
             print("Received heart rate: \(heartRate) bpm")
+            HeartRateDataManager().storeHeartRateData(heartRate: heartRate)
         }
     }
 }

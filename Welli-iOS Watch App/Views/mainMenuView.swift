@@ -239,7 +239,7 @@ class HostingController<Content>: WKHostingController<Content> where Content: Vi
         NotificationCenter.default.addObserver(self, selector: #selector(appMovedToForeground), name: WKExtension.applicationDidBecomeActiveNotification, object: nil)
     }
     
-    @objc func appMovedToBackground() {
+    @objc func appMovedToBackground() {x
         print("App moved to Background!")
         self.isInBackground = true
     }
