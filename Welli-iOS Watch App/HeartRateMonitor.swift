@@ -1,4 +1,5 @@
 import Foundation
+import UserNotifications
 import HealthKit
 import WatchConnectivity
 
@@ -82,7 +83,7 @@ class HeartRateMonitor: NSObject, HKWorkoutSessionDelegate {
             print("Workout session is in an unknown state.")
         }
     }
-
+    
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
         print("Workout session failed with error: \(error.localizedDescription)")
         stopMonitoring()
@@ -97,3 +98,8 @@ class HeartRateMonitor: NSObject, HKWorkoutSessionDelegate {
         }
     }
 }
+    
+    
+    // Request authorization when the application becomes active.
+
+
