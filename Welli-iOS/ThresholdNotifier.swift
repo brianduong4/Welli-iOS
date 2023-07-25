@@ -1,5 +1,5 @@
 //
-//  ThredholdNotifier.swift
+//  ThresholdNotifier.swift
 //  Welli-iOS
 //
 //  Created by Basel Farag on 7/25/23.
@@ -10,8 +10,8 @@ import UIKit
 
 class ThresholdNotifier {
     
-    static let shared = ThresholdNotifier(username: "Dave")
-
+    static let shared = ThresholdNotifier(username: "your_username")
+    
     var username: String
     
     private var thresholds: [Int: Double] = [

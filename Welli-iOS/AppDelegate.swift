@@ -16,9 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        
-        ThresholdNotifier.shared.username = "YourUsername" // Replace "YourUsername" with the actual username
-
         // Request user notifications authorization
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if let error = error {
@@ -44,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         
         return true
     }
+    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if let error = error {
             print("WCSession activation failed with error: \(error.localizedDescription)")
@@ -67,11 +65,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        if let heartRate = message["heartRate"] as? Double {
+        if let heartRates = message["heartRate"] as? [Double] {
             // Do something with the received heart rate data
-            print("Received heart rate: \(heartRate) bpm")
-            HeartRateDataManager().storeHeartRateData(heartRate: heartRate)
+            for heartRate in heartRates {
+                print("Received heart rate: \(heartRate) bpm")
+                ThresholdNotifier.shared.handleHeartRateSample(heartRate)
+            }
         }
     }
 }
-

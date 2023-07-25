@@ -1,27 +1,10 @@
-// ThresholdNotifier.swift
-
-import Foundation
 import UserNotifications
 
 class NotificationManager {
     
     static let shared = NotificationManager()
     
-    private init() {}
-    
-    func requestNotificationAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            if let error = error {
-                print("Failed to request authorization for notifications: \(error)")
-                return
-            }
-            if granted {
-                print("Authorization for notifications granted.")
-            } else {
-                print("Authorization for notifications denied.")
-            }
-        }
-    }
+    private init() { }
     
     func scheduleNotification(with title: String, body: String, interval: TimeInterval) {
         let content = UNMutableNotificationContent()
@@ -35,12 +18,8 @@ class NotificationManager {
         
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
-                print("Failed to schedule notification: \(error)")
+                print("Failed to schedule notification: \(error.localizedDescription)")
             }
         }
-    }
-    
-    func cancelAllNotifications() {
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 }
