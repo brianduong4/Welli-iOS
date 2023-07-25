@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0197B7302A703EBA00993A56 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197B72F2A703EBA00993A56 /* NotificationManager.swift */; };
+		0197B7322A7041FB00993A56 /* ThresholdNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197B7312A7041FB00993A56 /* ThresholdNotifier.swift */; };
 		6D043BFC29F64D18006E69DF /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D043BFB29F64D18006E69DF /* UserNotifications.framework */; };
 		6D24D4E729E5C0460033E211 /* mainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24D4E629E5C0450033E211 /* mainMenuView.swift */; };
 		6D24D4EE29E5C1D10033E211 /* betterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D24D4E929E5C1D10033E211 /* betterView.swift */; };
@@ -105,6 +107,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0197B72F2A703EBA00993A56 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		0197B7312A7041FB00993A56 /* ThresholdNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThresholdNotifier.swift; sourceTree = "<group>"; };
 		6D043BFA29F63E38006E69DF /* Welli-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Welli-iOS.entitlements"; sourceTree = "<group>"; };
 		6D043BFB29F64D18006E69DF /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/UserNotifications.framework; sourceTree = DEVELOPER_DIR; };
 		6D24D4E629E5C0450033E211 /* mainMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainMenuView.swift; sourceTree = "<group>"; };
@@ -283,6 +287,8 @@
 				6DAF3B3B29DC887F00CD9C96 /* ContentView.swift */,
 				6DAF3B9A29DCAEB300CD9C96 /* WatchConnector.swift */,
 				6DC52F842A5D9CEF00F2DB37 /* HeartRateDataManager.swift */,
+				0197B7312A7041FB00993A56 /* ThresholdNotifier.swift */,
+				0197B72F2A703EBA00993A56 /* NotificationManager.swift */,
 				6DAF3B3D29DC888200CD9C96 /* Assets.xcassets */,
 				6DAF3B3F29DC888200CD9C96 /* Preview Content */,
 			);
@@ -606,6 +612,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0197B7322A7041FB00993A56 /* ThresholdNotifier.swift in Sources */,
+				0197B7302A703EBA00993A56 /* NotificationManager.swift in Sources */,
 				6DC52F872A5D9D6000F2DB37 /* HeartRateDataManager.swift in Sources */,
 				6DC52F832A5D9B7E00F2DB37 /* AppDelegate.swift in Sources */,
 				6DAF3B3C29DC887F00CD9C96 /* ContentView.swift in Sources */,
@@ -899,7 +907,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Welli-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 969BSA77M2;
+				DEVELOPMENT_TEAM = 77JGXNAM7B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Welli-iOS/Info.plist";
@@ -939,7 +947,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Welli-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 969BSA77M2;
+				DEVELOPMENT_TEAM = 77JGXNAM7B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Welli-iOS/Info.plist";
