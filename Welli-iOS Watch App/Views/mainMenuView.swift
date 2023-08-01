@@ -125,10 +125,10 @@ struct ContentView: View {
                 .padding()*/
                 .onAppear(perform: start) //STARTS MONITORING HEART RATE
                 .onAppear {
-                    if !HeartRateMonitor.shared
+                    if !HeartRateMonitor
                         .isMonitoring {
                             print("Starting to monitor heart rate.")
-                            HeartRateMonitor.shared.startMonitoring()
+                            HeartRateMonitor.shared.startMonitoringHeartRate()
                         }
                 }
                 

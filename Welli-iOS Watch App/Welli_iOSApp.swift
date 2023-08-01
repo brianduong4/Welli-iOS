@@ -77,7 +77,7 @@ struct Welli_iOS_Watch_AppApp: App {
 
     
     init() {
-        HeartRateMonitor.shared.startMonitoring()
+        HeartRateMonitor.shared.startMonitoringHeartRate()
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {
             success, error in

@@ -14,7 +14,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
             }
         }
         
-        HeartRateMonitor.shared.startMonitoring()
+        HeartRateMonitor.shared.startMonitoringHeartRate()
     }
     
     // The workout session will now continue when the app goes into the background
@@ -36,4 +36,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
             HeartRateMonitor.shared.sendHeartRateDataToPhone(heartRate)
         }
     }
+    
 }
+
